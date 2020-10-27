@@ -29,6 +29,15 @@ Senha inválida
     
     Page Should Contain                 Senha é invalida!
 
+Senha inválida validando pelo alert
+    Go To                               ${url}/login
+    Input Text                          id:userId                    stark
+    Input Text                          id:passId                    jarvis
+    Click Element                       class:btn-login
+    
+    ${message}=                         Get WebElement               id:flash
+    Should Contain                      ${message.text}              Senha é invalida!
+
 Usuário inválido
     Go To                               ${url}/login
     Input Text                          id:userId                    star
@@ -37,6 +46,15 @@ Usuário inválido
     
     Page Should Contain                 O usuário informado não está cadastrado!
 
+Usuário inválido validando pelo alert
+    Go To                               ${url}/login
+    Input Text                          id:userId                    star
+    Input Text                          id:passId                    jarvis!
+    Click Element                       class:btn-login
+    
+    ${message}=                         Get WebElement               id:flash
+    Should Contain                      ${message.text}              O usuário informado não está cadastrado!
+
 Usuário e senha em branco
     Go To                               ${url}/login
     Input Text                          id:userId                    ${EMPTY}
@@ -44,3 +62,12 @@ Usuário e senha em branco
     Click Element                       class:btn-login
     
     Page Should Contain                 O usuário informado não está cadastrado!
+
+Usuário e senha em branco validando pelo alert
+    Go To                               ${url}/login
+    Input Text                          id:userId                    ${EMPTY}
+    Input Text                          id:passId                    ${EMPTY}
+    Click Element                       class:btn-login
+    
+    ${message}=                         Get WebElement               id:flash
+    Should Contain                      ${message.text}              O usuário informado não está cadastrado!
